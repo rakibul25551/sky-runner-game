@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&display=swap');
+/* One full-bleed WebGL stage with HUD and cards layered on top. */
+:root{
+  --sky-top:#150b3a; --sky-mid:#6b1f7a; --sky-low:#ff6a5c; --sky-hor:#ffc27a;
+  --neon:#3cf2ff; --hot:#ff3d8b; --gold:#ffd24a; --ink:#f4f0ff; --panel:rgba(14,8,40,.72);
+  --display:'Chakra Petch','Arial Narrow',Impact,sans-serif;
+  color-scheme:dark;
+}
+html,body{height:100%;margin:0;background:#150b3a;color:var(--ink);font-family:system-ui,sans-serif;overflow:hidden;overscroll-behavior:none}
+#stage{position:fixed;inset:0;touch-action:none;user-select:none;-webkit-user-select:none}
+.hud{position:fixed;inset:0;pointer-events:none;font-family:var(--display);padding:max(14px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) 14px max(16px,env(safe-area-inset-left,0px));display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.hud .big{font-size:clamp(30px,6vw,52px);font-weight:700;line-height:1;letter-spacing:.04em;text-shadow:0 2px 10px rgba(12,18,60,.7),0 0 18px rgba(60,242,255,.45)}
+.hud .lbl{font-size:12px;letter-spacing:.22em;color:#fff;text-shadow:0 1px 6px rgba(12,18,60,.8);text-transform:uppercase}
+.hud .r{text-align:right}
+.hud .orbs{color:var(--gold);text-shadow:0 0 14px rgba(255,210,74,.6)}
+.meter{width:120px;height:6px;background:rgba(255,255,255,.18);margin-top:8px;margin-left:auto;border-radius:3px;overflow:hidden}
+.meter i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--neon),var(--hot))}
+.card{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:16px;background:radial-gradient(ellipse at 50% 40%,rgba(21,11,58,.35),rgba(21,11,58,.85))}
+.card[hidden]{display:none!important}
+.box{width:min(420px,100%);background:var(--panel);border:1px solid rgba(60,242,255,.35);padding:28px 24px;text-align:center;font-family:var(--display);backdrop-filter:blur(6px);box-shadow:0 0 40px rgba(255,61,139,.25)}
+.logo{font-size:clamp(44px,12vw,68px);font-weight:700;line-height:.9;letter-spacing:.06em;margin:0;text-transform:uppercase}
+.logo span{color:var(--hot);margin-left:.1em}
+.hud[hidden]{display:none!important}
+.sub{margin:.6em 0 1.4em;color:#d7c9ff;font-size:14px;letter-spacing:.18em;text-transform:uppercase}
+button.go{font:700 20px var(--display);letter-spacing:.14em;text-transform:uppercase;color:#1a0a33;background:var(--neon);border:0;padding:14px 34px;cursor:pointer;box-shadow:0 0 24px rgba(60,242,255,.6);clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%)}
+button.go:hover{background:#8ffaff}
+button.go:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.keys{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:1.4em auto 0;text-align:left;font-size:13px;color:#d7c9ff;width:max-content;max-width:100%}
+.keys b{color:var(--neon);font-weight:700;letter-spacing:.08em}
+.stat{display:flex;justify-content:space-around;gap:10px;margin:1em 0 1.4em}
+.stat div{min-width:0}.stat .n{font-size:30px;font-weight:700}.stat .l{font-size:11px;letter-spacing:.2em;color:#cbb8ff;text-transform:uppercase}
+.new{color:var(--gold);letter-spacing:.2em;font-size:13px;text-transform:uppercase;margin-top:-.6em;margin-bottom:1em}
+@media (prefers-reduced-motion:reduce){.card{backdrop-filter:none}}
+
+button.theme{margin-top:14px;font:600 13px var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--ink);background:transparent;border:1px solid rgba(255,255,255,.35);padding:8px 14px;cursor:pointer}
+button.theme:hover{border-color:var(--neon);color:var(--neon)}
+button.theme:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+
+.chips{display:flex;flex-direction:column;align-items:flex-end;gap:6px;margin-top:10px}
+.chip{font:700 12px var(--display);letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;color:#1a0a33;clip-path:polygon(6px 0,100% 0,calc(100% - 6px) 100%,0 100%)}
+.chip.magnet{background:#ff6b85}.chip.dbl{background:#ffc42e}.chip.shield{background:#4be58a}
+button.go.revive{background:#4be58a;box-shadow:0 0 24px rgba(75,229,138,.55)}
